@@ -11,7 +11,7 @@ sonarqube {
         property "sonar.organization", "se2-sample-tut-project"
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.java.coveragePlugin", "jacoco"
-        property "sonar.coverage.jacoco.xmlReportPaths", "${project.basedir}/../build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
+        property "sonar.coverage.jacoco.xmlReportPaths", "${project.projectDir}/../build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
     }
 }
 
