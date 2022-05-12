@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'jacoco'
+    id 'org.sonarqube' version '3.3'
 }
 
 android {
@@ -39,7 +40,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
 
     reports {
         xml.enabled true
-        xml.destination file("${project.projectDir}/reports/jacoco/jacocoTestReport/jacocoTestReport.xml")
+        xml.destination file("${project.projectDir}/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml")
     }
 
     def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
@@ -51,6 +52,15 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
     executionData.from = files("${buildDir}/jacoco/testDebugUnitTest.exec")
 }
 
+sonarqube {
+    properties {
+        property "sonar.projectKey", "SE2-sample-tut-project_demo-repo"
+        property "sonar.organization", "se2-sample-tut-project"
+        property "sonar.host.url", "https://sonarcloud.io"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.coverage.jacoco.xmlReportPaths", "${project.projectDir}/build/reports/jacoco/jacocoTestReport/jacocoTestReport.xml"
+    }
+}
 
 dependencies {
 
