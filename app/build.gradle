@@ -39,7 +39,7 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
 
     reports {
         xml.enabled true
-        xml.destination file("${buildDir}/reports/jacoco/jacocoTestReport/jacocoTestReport.xml")
+        xml.destination file("${project.projectDir}/reports/jacoco/jacocoTestReport/jacocoTestReport.xml")
     }
 
     def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test*.*', 'android/**/*.*']
@@ -51,11 +51,6 @@ task jacocoTestReport(type: JacocoReport, dependsOn: 'testDebugUnitTest') {
     executionData.from = files("${buildDir}/jacoco/testDebugUnitTest.exec")
 }
 
-sonarqube {
-    properties{
-        property "sonar.coverage.jacoco.xmlReportPaths", jacocoTestReport.reports.xml.destination
-    }
-}
 
 dependencies {
 
