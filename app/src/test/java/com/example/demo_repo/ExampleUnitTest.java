@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() {
-        assertEquals(4, SampleClass.addition(2,2));
+        SampleClass sample = new SampleClass();
+        assertEquals(4, sample.addition(2,2));
     }
 }
