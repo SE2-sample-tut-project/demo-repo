@@ -6,7 +6,7 @@
 ### 
 
 ## How to get jacoco plugin and sonar scanner to work within modules:
-### Important: make sure you use Junit 5 or higher 
+### Important: make sure you use Junit 5 or higher! 
 1. you can use the plain 'jacoco' plugin for this to work
 2. move the <b>sonarqube</b> plugin and its properties to your <b>build.gradle in a module (e.g. app/build.gradle)</b>
 3. add a <b>jacocoTestReport</b> task that depends on <b>testDebugUnitTest</b> (you can see the template below)
